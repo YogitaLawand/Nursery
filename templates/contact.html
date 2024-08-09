@@ -1,0 +1,58 @@
+{% include 'header.html' %}
+{% load static %}
+
+{% block 'main' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="{% static 'asset/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <a href="/home">Home page</a>
+            </div>
+            <div class="col-md-4 shadow mt-5 p-4 mx-auto">
+                <h2 align="center">Contact</h2>
+                {% if errmsg %}
+                      <div class="alert alert-danger">
+                         {{errmsg}}
+                     </div>
+                {% endif %}
+                <form method="POST" action="/home">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="Input1" class="form-label"><strong>Your Name</strong></label>
+                        <input type="text" name=uname class="form-control" id="Input1" placeholder="enter username here">
+                    </div><!--username-->
+
+                    <div class="mb-3">
+                        <label for="Input2" class="form-label"><strong>Email Address</strong></label>
+                        <input type="email" name=uname class="form-control" id="Input2" placeholder="enter email address here">
+                    </div><!--Email address-->
+
+                    <div class="mb-3">
+                        <label for="input3" class="form-label"><strong>Message</strong></label>
+                        <textarea class="form-control" id="input3" rows="5" placeholder="enter message here"></textarea>
+                      </div>
+
+                    <div class="mb-3">
+                     
+                        <input type="submit" class="btn btn-success" value="Send"/>
+                        
+                    </div><!--contact button-->
+                      
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="{% static 'asset/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
+{% endblock 'main' %}
